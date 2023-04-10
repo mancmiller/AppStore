@@ -13,6 +13,7 @@
 		04EFDFAB29E419D10065E5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDFA929E419D10065E5E4 /* Main.storyboard */; };
 		04EFDFAD29E419D30065E5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDFAC29E419D30065E5E4 /* Assets.xcassets */; };
 		04EFDFB029E419D30065E5E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDFAE29E419D30065E5E4 /* LaunchScreen.storyboard */; };
+		04EFDFB829E4204D0065E5E4 /* ASTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		04EFDFAC29E419D30065E5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04EFDFAF29E419D30065E5E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04EFDFB129E419D30065E5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				04EFDFA329E419D10065E5E4 /* AppDelegate.swift */,
 				04EFDFA529E419D10065E5E4 /* SceneDelegate.swift */,
 				04EFDFA729E419D10065E5E4 /* ViewController.swift */,
+				04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */,
 				04EFDFA929E419D10065E5E4 /* Main.storyboard */,
 				04EFDFAC29E419D30065E5E4 /* Assets.xcassets */,
 				04EFDFAE29E419D30065E5E4 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EFDFA829E419D10065E5E4 /* ViewController.swift in Sources */,
+				04EFDFB829E4204D0065E5E4 /* ASTabBarController.swift in Sources */,
 				04EFDFA429E419D10065E5E4 /* AppDelegate.swift in Sources */,
 				04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */,
 			);
