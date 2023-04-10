@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		047644C429E434FD00B430BD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C329E434FD00B430BD /* SearchVC.swift */; };
+		047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C929E4443400B430BD /* SearchResultCell.swift */; };
 		04EFDFA429E419D10065E5E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFA329E419D10065E5E4 /* AppDelegate.swift */; };
 		04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFA529E419D10065E5E4 /* SceneDelegate.swift */; };
 		04EFDFA829E419D10065E5E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFA729E419D10065E5E4 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		047644C329E434FD00B430BD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		047644C929E4443400B430BD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		04EFDFA029E419D10065E5E4 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EFDFA329E419D10065E5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EFDFA529E419D10065E5E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,9 +66,18 @@
 		047644C729E4357200B430BD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				047644C829E4441300B430BD /* Cells */,
 				04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		047644C829E4441300B430BD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				047644C929E4443400B430BD /* SearchResultCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		04EFDF9729E419D10065E5E4 = {
@@ -172,6 +183,7 @@
 				04EFDFB829E4204D0065E5E4 /* ASTabBarController.swift in Sources */,
 				04EFDFA429E419D10065E5E4 /* AppDelegate.swift in Sources */,
 				04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */,
+				047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */,
 				047644C429E434FD00B430BD /* SearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

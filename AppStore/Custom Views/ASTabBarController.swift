@@ -12,9 +12,9 @@ class ASTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
+            createNC(viewController: SearchVC(), title: "Search", systemImageName: "magnifyingglass"),
             createNC(viewController: UIViewController(), title: "Today", systemImageName: "doc.text.image"),
-            createNC(viewController: UIViewController(), title: "Apps", systemImageName: "square.stack.3d.up.fill"),
-            createNC(viewController: SearchVC(), title: "Search", systemImageName: "magnifyingglass")
+            createNC(viewController: UIViewController(), title: "Apps", systemImageName: "square.stack.3d.up.fill")
         ]
     }
     
