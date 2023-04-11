@@ -52,9 +52,18 @@ class SearchResultCell: UICollectionViewCell {
         return button
     }()
     
+    lazy var screenshotImageView1 = self.createScreenshotImageView()
+    lazy var screenshotImageView2 = self.createScreenshotImageView()
+    lazy var screenshotImageView3 = self.createScreenshotImageView()
+    
+    func createScreenshotImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .blue
+        return imageView
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .yellow
         
         configureStackViews()
     }
@@ -66,21 +75,33 @@ class SearchResultCell: UICollectionViewCell {
         ])
         labelsStackView.axis = .vertical
         
-        let stackView = UIStackView(arrangedSubviews: [
+        let infoStackView = UIStackView(arrangedSubviews: [
             appIconImageView, labelsStackView, getButton
         ])
-        stackView.spacing = 12
-        stackView.alignment = .center
+        infoStackView.spacing = 12
+        infoStackView.alignment = .center
         
-        addSubview(stackView)
+        let screenshotsStackView = UIStackView(arrangedSubviews: [
+        screenshotImageView1, screenshotImageView2, screenshotImageView3
+        ])
+        screenshotsStackView.spacing = 12
+        screenshotsStackView.distribution = .fillEqually
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let overallStackView = UIStackView(arrangedSubviews: [
+        infoStackView, screenshotsStackView
+        ])
+        overallStackView.axis = .vertical
+        overallStackView.spacing = 16
+        
+        addSubview(overallStackView)
+        
+        overallStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            overallStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            overallStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            overallStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            overallStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
         ])
     }
     
