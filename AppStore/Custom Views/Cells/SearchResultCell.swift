@@ -26,7 +26,7 @@ class SearchResultCell: UICollectionViewCell {
         return label
     }()
     
-    let descriptionLabel: UILabel = {
+    let categoryLabel: UILabel = {
        let label = UILabel()
         label.text = "Photos & Video"
         return label
@@ -71,7 +71,7 @@ class SearchResultCell: UICollectionViewCell {
     fileprivate func configureStackViews() {
         
         let labelsStackView = UIStackView(arrangedSubviews: [
-        nameLabel, descriptionLabel, ratingsLabel
+        nameLabel, categoryLabel, ratingsLabel
         ])
         labelsStackView.axis = .vertical
         

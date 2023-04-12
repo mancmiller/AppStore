@@ -10,11 +10,31 @@ import UIKit
 class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellID = "reuseID"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)
-
+        fetchItunesApps()
+        
+    }
+    
+    fileprivate var appResults = [Result]()
+    
+    
+    fileprivate func fetchItunesApps() {
+        
+        APIManager.shared.fetchApps { results, error in
+            
+            if let error = error {
+                print("Failed to fetch apps:", error)
+                return
+            }
+            
+            self.appResults = results
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -22,12 +42,19 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! SearchResultCell
+        
+        let appResult = appResults[indexPath.item]
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+        
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return appResults.count
     }
     
     init() {
