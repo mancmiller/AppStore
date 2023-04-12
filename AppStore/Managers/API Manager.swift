@@ -10,9 +10,8 @@ import Foundation
 class APIManager {
     static let shared = APIManager()
     
-    func fetchApps(completion: @escaping ([Result], Error?) -> ()) {
-        print("Fetchinf apps from the service layer")
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+    func fetchApps(searchTerm: String, completion: @escaping ([Result], Error?) -> ()) {
+        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in

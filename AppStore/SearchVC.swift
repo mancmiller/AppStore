@@ -6,16 +6,46 @@
 //
 
 import UIKit
+import SDWebImage
 
-class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     fileprivate let cellID = "reuseID"
+    
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)
-        fetchItunesApps()
         
+        setupSearchBar()
+        
+//        fetchItunesApps()
+        
+    }
+    
+    fileprivate func setupSearchBar() {
+        navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+    }
+    
+    var timer: Timer?
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            APIManager.shared.fetchApps(searchTerm: searchText) { result, error in
+                
+                self.appResults = result
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        })
     }
     
     fileprivate var appResults = [Result]()
@@ -23,7 +53,7 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate func fetchItunesApps() {
         
-        APIManager.shared.fetchApps { results, error in
+        APIManager.shared.fetchApps(searchTerm: "youtube") { results, error in
             
             if let error = error {
                 print("Failed to fetch apps:", error)
@@ -44,12 +74,8 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! SearchResultCell
         
-        let appResult = appResults[indexPath.item]
-        cell.nameLabel.text = appResult.trackName
-        cell.categoryLabel.text = appResult.primaryGenreName
-        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
-        
-        
+        cell.appResult = appResults[indexPath.item]
+
         return cell
     }
     

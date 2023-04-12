@@ -9,10 +9,28 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
     
+    var appResult: Result! {
+        didSet {
+            nameLabel.text = appResult.trackName
+            categoryLabel.text = appResult.primaryGenreName
+            ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+            
+            appIconImageView.sd_setImage(with: URL(string: appResult.artworkUrl100))
+            
+            screenshotImageView1.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            if appResult.screenshotUrls.count > 1 {
+                screenshotImageView2.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+            }
+            if appResult.screenshotUrls.count > 2 {
+                screenshotImageView3.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+            }
+        }
+    }
+    
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
-        iv.layer.cornerRadius = 12
+        iv.layer.cornerRadius = 14
+        iv.clipsToBounds = true
         NSLayoutConstraint.activate([
             iv.widthAnchor.constraint(equalToConstant: 64),
             iv.heightAnchor.constraint(equalToConstant: 64)
@@ -43,8 +61,8 @@ class SearchResultCell: UICollectionViewCell {
         button.setTitle("GET", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        button.layer.cornerRadius = 12
+        button.backgroundColor = UIColor.systemGray5
+        button.layer.cornerRadius = 14
         NSLayoutConstraint.activate([
             button.heightAnchor.constraint(equalToConstant: 32),
             button.widthAnchor.constraint(equalToConstant: 80)
@@ -58,7 +76,11 @@ class SearchResultCell: UICollectionViewCell {
     
     func createScreenshotImageView() -> UIImageView {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.layer.cornerRadius = 14
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.3
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     
