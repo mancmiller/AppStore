@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     fileprivate let cellID = "reuseID"
     
@@ -81,13 +81,5 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appResults.count
-    }
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
