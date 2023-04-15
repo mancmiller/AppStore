@@ -38,37 +38,11 @@ class SearchResultCell: UICollectionViewCell {
         return iv
     }()
     
-    let nameLabel: UILabel = {
-       let label = UILabel()
-        label.text = "App Name"
-        return label
-    }()
+    let nameLabel = UILabel(text: "App Name", font: .systemFont(ofSize: 20, weight: .regular), textColor: .label)
     
-    let categoryLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Photos & Video"
-        return label
-    }()
+    let categoryLabel = UILabel(text: "Photos & Video", font: .systemFont(ofSize: 13, weight: .medium), textColor: .secondaryLabel)
     
-    let ratingsLabel: UILabel = {
-       let label = UILabel()
-        label.text = "9.26M"
-        return label
-    }()
-    
-    let getButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("GET", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = UIColor.systemGray5
-        button.layer.cornerRadius = 14
-        NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 32),
-            button.widthAnchor.constraint(equalToConstant: 80)
-        ])
-        return button
-    }()
+    let ratingsLabel = UILabel(text: "4.44", font: .systemFont(ofSize: 15, weight: .medium), textColor: .secondaryLabel)
     
     lazy var screenshotImageView1 = self.createScreenshotImageView()
     lazy var screenshotImageView2 = self.createScreenshotImageView()
@@ -98,7 +72,7 @@ class SearchResultCell: UICollectionViewCell {
         labelsStackView.axis = .vertical
         
         let infoStackView = UIStackView(arrangedSubviews: [
-            appIconImageView, labelsStackView, getButton
+            appIconImageView, labelsStackView, GetButton()
         ])
         infoStackView.spacing = 12
         infoStackView.alignment = .center

@@ -13,6 +13,10 @@
 		04123BB129E7FD30008A8262 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB029E7FD30008A8262 /* AppsHorizontalController.swift */; };
 		04123BB329EA9C37008A8262 /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB229EA9C37008A8262 /* AppRowCell.swift */; };
 		04123BB629EA9D60008A8262 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB529EA9D60008A8262 /* Extensions.swift */; };
+		04123BB829EAB2D1008A8262 /* AppsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB729EAB2D1008A8262 /* AppsHeaderView.swift */; };
+		04123BBA29EAB588008A8262 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */; };
+		04123BBF29EAC6F2008A8262 /* GetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BBE29EAC6F2008A8262 /* GetButton.swift */; };
+		04123BC129EACC98008A8262 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC029EACC98008A8262 /* AppsHeaderCell.swift */; };
 		047644C429E434FD00B430BD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C329E434FD00B430BD /* SearchVC.swift */; };
 		047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C929E4443400B430BD /* SearchResultCell.swift */; };
 		047644CD29E56D7D00B430BD /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644CC29E56D7D00B430BD /* SearchResult.swift */; };
@@ -34,6 +38,10 @@
 		04123BB029E7FD30008A8262 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 		04123BB229EA9C37008A8262 /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
 		04123BB529EA9D60008A8262 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		04123BB729EAB2D1008A8262 /* AppsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderView.swift; sourceTree = "<group>"; };
+		04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
+		04123BBE29EAC6F2008A8262 /* GetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetButton.swift; sourceTree = "<group>"; };
+		04123BC029EACC98008A8262 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		047644C329E434FD00B430BD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		047644C929E4443400B430BD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		047644CC29E56D7D00B430BD /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -72,6 +80,33 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		04123BBB29EAB674008A8262 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */,
+				04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */,
+				04123BB729EAB2D1008A8262 /* AppsHeaderView.swift */,
+				047644C829E4441300B430BD /* Cells */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		04123BBC29EAB67A008A8262 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04123BBD29EAB694008A8262 /* Cells */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		04123BBD29EAB694008A8262 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				047644C929E4443400B430BD /* SearchResultCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		047644C529E4350400B430BD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +133,9 @@
 		047644C729E4357200B430BD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				047644C829E4441300B430BD /* Cells */,
-				04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */,
+				04123BBC29EAB67A008A8262 /* Search */,
+				04123BBB29EAB674008A8262 /* Apps */,
+				04123BBE29EAC6F2008A8262 /* GetButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -107,9 +143,9 @@
 		047644C829E4441300B430BD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				047644C929E4443400B430BD /* SearchResultCell.swift */,
 				04123BAE29E6DBE9008A8262 /* AppsGroupCell.swift */,
 				04123BB229EA9C37008A8262 /* AppRowCell.swift */,
+				04123BC029EACC98008A8262 /* AppsHeaderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -295,8 +331,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04123BB829EAB2D1008A8262 /* AppsHeaderView.swift in Sources */,
+				04123BBF29EAC6F2008A8262 /* GetButton.swift in Sources */,
 				04123BAD29E6D9B4008A8262 /* BaseListController.swift in Sources */,
 				04EFDFA829E419D10065E5E4 /* ViewController.swift in Sources */,
+				04123BC129EACC98008A8262 /* AppsHeaderCell.swift in Sources */,
 				04123BAF29E6DBE9008A8262 /* AppsGroupCell.swift in Sources */,
 				047644D029E687B200B430BD /* API Manager.swift in Sources */,
 				047644CD29E56D7D00B430BD /* SearchResult.swift in Sources */,
@@ -304,6 +343,7 @@
 				04123BAB29E6D877008A8262 /* AppsVC.swift in Sources */,
 				04EFDFA429E419D10065E5E4 /* AppDelegate.swift in Sources */,
 				04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */,
+				04123BBA29EAB588008A8262 /* AppsHeaderHorizontalController.swift in Sources */,
 				047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */,
 				04123BB329EA9C37008A8262 /* AppRowCell.swift in Sources */,
 				047644C429E434FD00B430BD /* SearchVC.swift in Sources */,

@@ -33,7 +33,6 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
     var timer: Timer?
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         
         timer?.invalidate()
         

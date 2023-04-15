@@ -8,10 +8,11 @@
 import UIKit
 
 extension UILabel {
-    convenience init(text: String, font: UIFont) {
+    convenience init(text: String, font: UIFont, textColor: UIColor) {
         self.init(frame: .zero)
         self.text = text
         self.font = font
+        self.textColor = textColor
     }
 }
 
@@ -21,12 +22,5 @@ extension UIImageView {
         self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
-    }
-}
-
-extension UIButton {
-    convenience init(title: String) {
-        self.init(type: .system)
-        setTitle(title, for: .normal)
     }
 }
