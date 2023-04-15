@@ -17,19 +17,15 @@ class AppsGroupCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemCyan
-        
         addSubview(titleLabel)
         addSubview(horizontalController.view)
-        
-        horizontalController.view.backgroundColor = .blue
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         horizontalController.view.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
             
@@ -42,13 +38,5 @@ class AppsGroupCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension UILabel {
-    convenience init(text: String, font: UIFont) {
-        self.init(frame: .zero)
-        self.text = text
-        self.font = font
     }
 }
