@@ -37,7 +37,7 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
         timer?.invalidate()
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
-            APIManager.shared.fetchApps(searchTerm: searchText) { result, error in
+            APIManager.shared.fetchSearchApps(searchTerm: searchText) { result, error in
                 
                 self.appResults = result
                 DispatchQueue.main.async {
@@ -52,7 +52,7 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
     
     fileprivate func fetchItunesApps() {
         
-        APIManager.shared.fetchApps(searchTerm: "youtube") { results, error in
+        APIManager.shared.fetchSearchApps(searchTerm: "youtube") { results, error in
             
             if let error = error {
                 print("Failed to fetch apps:", error)

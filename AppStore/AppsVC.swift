@@ -18,6 +18,18 @@ class AppsVC: BaseListController, UICollectionViewDelegateFlowLayout {
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellID)
         
         collectionView.register(AppsHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        APIManager.shared.fetchApps { appResults, error in
+            if let error = error {
+                print("Failed to fetch apps:", error)
+                return
+            }
+            print(appResults?.feed.results)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -17,6 +17,7 @@
 		04123BBA29EAB588008A8262 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */; };
 		04123BBF29EAC6F2008A8262 /* GetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BBE29EAC6F2008A8262 /* GetButton.swift */; };
 		04123BC129EACC98008A8262 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC029EACC98008A8262 /* AppsHeaderCell.swift */; };
+		04123BC329EBC292008A8262 /* AppResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC229EBC292008A8262 /* AppResults.swift */; };
 		047644C429E434FD00B430BD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C329E434FD00B430BD /* SearchVC.swift */; };
 		047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C929E4443400B430BD /* SearchResultCell.swift */; };
 		047644CD29E56D7D00B430BD /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644CC29E56D7D00B430BD /* SearchResult.swift */; };
@@ -42,6 +43,7 @@
 		04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		04123BBE29EAC6F2008A8262 /* GetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetButton.swift; sourceTree = "<group>"; };
 		04123BC029EACC98008A8262 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		04123BC229EBC292008A8262 /* AppResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResults.swift; sourceTree = "<group>"; };
 		047644C329E434FD00B430BD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		047644C929E4443400B430BD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		047644CC29E56D7D00B430BD /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				047644CC29E56D7D00B430BD /* SearchResult.swift */,
+				04123BC229EBC292008A8262 /* AppResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04123BC329EBC292008A8262 /* AppResults.swift in Sources */,
 				04123BB829EAB2D1008A8262 /* AppsHeaderView.swift in Sources */,
 				04123BBF29EAC6F2008A8262 /* GetButton.swift in Sources */,
 				04123BAD29E6D9B4008A8262 /* BaseListController.swift in Sources */,
