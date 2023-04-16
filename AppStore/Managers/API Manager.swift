@@ -34,11 +34,17 @@ class APIManager {
         }.resume()
     }
     
-    func fetchApps(completion: @escaping (AppResutls?, Error?) -> ()) {
-        
-//        let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
-        
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/50/apps.json") else { return }
+    func fetchTopFreeApps(completion: @escaping (AppResutls?, Error?) -> ()) {
+        fetchAppGroup(urlString: "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json", completion: completion)
+    }
+    
+    func fetchTopPaidApps(completion: @escaping (AppResutls?, Error?) -> ()) {
+        fetchAppGroup(urlString: "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/50/apps.json", completion: completion)
+    }
+    
+    
+    func fetchAppGroup(urlString: String, completion: @escaping (AppResutls?, Error?) -> Void) {
+        guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {

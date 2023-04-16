@@ -13,6 +13,7 @@ struct AppResutls: Decodable {
 
 struct Feed: Decodable {
     let title: String
+    let country: String
     let results: [FeedResult]
 }
 
