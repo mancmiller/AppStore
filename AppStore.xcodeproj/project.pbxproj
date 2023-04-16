@@ -93,29 +93,21 @@
 			path = Apps;
 			sourceTree = "<group>";
 		};
-		04123BBC29EAB67A008A8262 /* Search */ = {
+		04123BC429EBD403008A8262 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				04123BBD29EAB694008A8262 /* Cells */,
+				04123BAA29E6D877008A8262 /* AppsVC.swift */,
+				04123BB029E7FD30008A8262 /* AppsHorizontalController.swift */,
 			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		04123BBD29EAB694008A8262 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				047644C929E4443400B430BD /* SearchResultCell.swift */,
-			);
-			path = Cells;
+			name = Apps;
 			sourceTree = "<group>";
 		};
 		047644C529E4350400B430BD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				047644C329E434FD00B430BD /* SearchVC.swift */,
-				04123BAA29E6D877008A8262 /* AppsVC.swift */,
 				04123BAC29E6D9B4008A8262 /* BaseListController.swift */,
-				04123BB029E7FD30008A8262 /* AppsHorizontalController.swift */,
+				047644C329E434FD00B430BD /* SearchVC.swift */,
+				04123BC429EBD403008A8262 /* Apps */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -135,9 +127,9 @@
 		047644C729E4357200B430BD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				04123BBC29EAB67A008A8262 /* Search */,
-				04123BBB29EAB674008A8262 /* Apps */,
 				04123BBE29EAC6F2008A8262 /* GetButton.swift */,
+				047644C929E4443400B430BD /* SearchResultCell.swift */,
+				04123BBB29EAB674008A8262 /* Apps */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";

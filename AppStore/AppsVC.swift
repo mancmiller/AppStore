@@ -22,13 +22,18 @@ class AppsVC: BaseListController, UICollectionViewDelegateFlowLayout {
         fetchData()
     }
     
+    var top: AppResutls?
+    
     fileprivate func fetchData() {
-        APIManager.shared.fetchApps { appResults, error in
+        APIManager.shared.fetchApps { (appResults, error) in
             if let error = error {
                 print("Failed to fetch apps:", error)
                 return
             }
-            print(appResults?.feed.results)
+            self.top = appResults
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -42,11 +47,15 @@ class AppsVC: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
+        
+        cell.titleLabel.text = top?.feed.title
+        cell.horizontalController.appGroup = top
+        cell.horizontalController.collectionView.reloadData()
         
         return cell
     }

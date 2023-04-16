@@ -36,8 +36,9 @@ class APIManager {
     
     func fetchApps(completion: @escaping (AppResutls?, Error?) -> ()) {
         
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json")
-        else { return }
+//        let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
+        
+        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/50/apps.json") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -47,12 +48,9 @@ class APIManager {
             
             do {
                 let appResults = try JSONDecoder().decode(AppResutls.self, from: data!)
-//                print(data)
-                appResults.feed.results.forEach({print($0.name)})
                 completion(appResults, nil)
             } catch {
                 completion(nil, error)
-//                print("Failed to decode:", error)
             }
         }.resume()
     }
