@@ -39,7 +39,7 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             APIManager.shared.fetchSearchApps(searchTerm: searchText) { result, error in
                 
-                self.appResults = result
+                self.appResults = result?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -59,7 +59,7 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
                 return
             }
             
-            self.appResults = results
+            self.appResults = results?.results ?? []
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

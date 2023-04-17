@@ -10,28 +10,10 @@ import Foundation
 class APIManager {
     static let shared = APIManager()
     
-    func fetchSearchApps(searchTerm: String, completion: @escaping ([Result], Error?) -> ()) {
+    func fetchSearchApps(searchTerm: String, completion: @escaping (SearchResult?, Error?) -> ()) {
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
-        guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            if let error = error {
-                print("Failed to fetch apps:", error)
-                completion([], nil)
-                return
-            }
-            
-            guard let data = data else { return }
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                completion(searchResult.results, nil)
-                
-            } catch let jsonError {
-                print("Failed to decode json:", jsonError)
-                completion([], jsonError)
-            }
-        }.resume()
+        fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
     func fetchTopFreeApps(completion: @escaping (AppResutls?, Error?) -> ()) {
@@ -44,25 +26,15 @@ class APIManager {
     
     
     func fetchAppGroup(urlString: String, completion: @escaping (AppResutls?, Error?) -> Void) {
-        guard let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(nil , error)
-                return
-            }
-            
-            do {
-                let appResults = try JSONDecoder().decode(AppResutls.self, from: data!)
-                completion(appResults, nil)
-            } catch {
-                completion(nil, error)
-            }
-        }.resume()
+        fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
     func fetchSocialApps(completion: @escaping ([SocialApp]?, Error?) -> Void) {
-        let urlString = "https://api.letsbuildthatapp.com/appstore/social"
+        fetchGenericJSONData(urlString: "https://api.letsbuildthatapp.com/appstore/social", completion: completion)
+    }
+    
+    func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
+        
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -72,7 +44,7 @@ class APIManager {
             }
             
             do {
-                let objects = try JSONDecoder().decode([SocialApp].self, from: data!)
+                let objects = try JSONDecoder().decode(T.self, from: data!)
                 completion(objects, nil)
             } catch {
                 completion(nil, error)
