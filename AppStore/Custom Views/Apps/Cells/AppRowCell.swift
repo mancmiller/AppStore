@@ -12,7 +12,7 @@ class  AppRowCell: UICollectionViewCell {
     let imageView = UIImageView(cornerRadius: 14)
     
     let nameLabel = UILabel(text: "App Name", font: .systemFont(ofSize: 20), textColor: .label)
-    let companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13, weight: .medium), textColor: .secondaryLabel)
+    let companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 16, weight: .medium), textColor: .secondaryLabel)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

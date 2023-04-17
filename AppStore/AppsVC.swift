@@ -111,6 +111,13 @@ class AppsVC: BaseListController, UICollectionViewDelegateFlowLayout {
         cell.titleLabel.text = "\(appGroup.feed.title) in \(appGroup.feed.country.uppercased())"
         cell.horizontalController.appGroup = appGroup
         cell.horizontalController.collectionView.reloadData()
+        cell.horizontalController.didSelectHandler = { [weak self] feedResult in
+            
+            let vc = AppDetailController()
+            vc.navigationItem.title = feedResult.name
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         
         return cell
     }

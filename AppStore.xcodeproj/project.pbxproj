@@ -20,6 +20,7 @@
 		04123BC329EBC292008A8262 /* AppResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC229EBC292008A8262 /* AppResults.swift */; };
 		04123BC629EBEC86008A8262 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC529EBEC86008A8262 /* SocialApp.swift */; };
 		04123BC829ED428D008A8262 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC729ED428D008A8262 /* HorizontalSnappingController.swift */; };
+		04123BCE29ED75E7008A8262 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BCD29ED75E7008A8262 /* AppDetailController.swift */; };
 		047644C429E434FD00B430BD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C329E434FD00B430BD /* SearchVC.swift */; };
 		047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C929E4443400B430BD /* SearchResultCell.swift */; };
 		047644CD29E56D7D00B430BD /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644CC29E56D7D00B430BD /* SearchResult.swift */; };
@@ -48,6 +49,7 @@
 		04123BC229EBC292008A8262 /* AppResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResults.swift; sourceTree = "<group>"; };
 		04123BC529EBEC86008A8262 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		04123BC729ED428D008A8262 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
+		04123BCD29ED75E7008A8262 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 		047644C329E434FD00B430BD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		047644C929E4443400B430BD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		047644CC29E56D7D00B430BD /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				04EFDFB729E4204D0065E5E4 /* ASTabBarController.swift */,
 				04123BB729EAB2D1008A8262 /* AppsHeaderView.swift */,
 				047644C829E4441300B430BD /* Cells */,
+				04123BCD29ED75E7008A8262 /* AppDetailController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				04123BAB29E6D877008A8262 /* AppsVC.swift in Sources */,
 				04EFDFA429E419D10065E5E4 /* AppDelegate.swift in Sources */,
 				04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */,
+				04123BCE29ED75E7008A8262 /* AppDetailController.swift in Sources */,
 				04123BBA29EAB588008A8262 /* AppsHeaderHorizontalController.swift in Sources */,
 				047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */,
 				04123BB329EA9C37008A8262 /* AppRowCell.swift in Sources */,
