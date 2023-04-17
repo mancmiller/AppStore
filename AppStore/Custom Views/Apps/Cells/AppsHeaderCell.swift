@@ -17,7 +17,6 @@ class AppsHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView.backgroundColor = .systemRed
         titleLabel.numberOfLines = 2
         
         let stackView = UIStackView(arrangedSubviews: [
@@ -32,7 +31,7 @@ class AppsHeaderCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -41,5 +40,4 @@ class AppsHeaderCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
