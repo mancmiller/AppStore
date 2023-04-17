@@ -24,7 +24,7 @@ class APIManager {
         fetchAppGroup(urlString: "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/50/apps.json", completion: completion)
     }
     
-    
+     
     func fetchAppGroup(urlString: String, completion: @escaping (AppResutls?, Error?) -> Void) {
         fetchGenericJSONData(urlString: urlString, completion: completion)
     }
