@@ -26,7 +26,7 @@ class AppsHeaderCell: UICollectionViewCell {
         
         addSubview(stackView)
         
-        stackView.spacing = 12
+        stackView.spacing = 8
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
