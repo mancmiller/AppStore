@@ -12,7 +12,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
     var appID: String! {
         didSet {
             APIManager.shared.fetchGenericJSONData(urlString: "https://itunes.apple.com/lookup?id=\(appID ?? "")") { (result: SearchResult?, error) in
-                print(result?.results.first?.releaseNotes)
+                print()
             }
         }
     }

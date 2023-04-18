@@ -29,7 +29,7 @@ class  AppRowCell: UICollectionViewCell {
         labelsStackView.spacing = 4
         
         let stackView = UIStackView(arrangedSubviews: [
-        imageView, labelsStackView, GetButton()
+            imageView, labelsStackView, GetButton(backgroundColor: .systemGray5, setTitleColor: .systemBlue)
         ])
         
         stackView.spacing = 16
