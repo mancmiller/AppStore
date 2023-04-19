@@ -24,7 +24,6 @@ class PreviewController: HorizontalSnappingController, UICollectionViewDelegateF
         override init(frame: CGRect) {
             super.init(frame: frame)
             addSubview(imageView)
-            imageView.backgroundColor = .systemPink
             imageView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 imageView.topAnchor.constraint(equalTo: topAnchor),

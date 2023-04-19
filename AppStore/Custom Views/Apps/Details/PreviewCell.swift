@@ -12,7 +12,6 @@ class PreviewCell: UICollectionViewCell {
     let horizontalController = PreviewController()
     
     let previewLabel = UILabel(text: "Preview", font: .boldSystemFont(ofSize: 24), textColor: .label)
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)
