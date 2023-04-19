@@ -18,10 +18,23 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
                     self.collectionView.reloadData()
                 }
             }
+            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appID ?? "")/sortby=mostrecent/json?l=en&cc=us"
+            APIManager.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
+                if let error = error {
+                    print("Failed to decode reviews:", error)
+                    return
+                }
+                
+                self.reviews = reviews
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
     
     var app: Result?
+    var reviews: Reviews?
     
     let detailCellID = "detailCellID"
     let previewCellID = "previewCellID"
@@ -55,6 +68,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewCellID, for: indexPath) as! ReviewRowCell
+            cell.reviewsController.reviews = self.reviews
             return cell
         }
     }
@@ -71,13 +85,11 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             
             let estimatedSize = dummyCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
             height = estimatedSize.height
-            return .init(width: view.frame.width, height: height)
         } else if indexPath.item == 1 {
             height = 500
-            return .init(width: view.frame.width, height: height)
         } else {
-            height = 280
-            return .init(width: view.frame.width, height: height)
+            height = 320
         }
+        return .init(width: view.frame.width, height: height)
     }
 }
