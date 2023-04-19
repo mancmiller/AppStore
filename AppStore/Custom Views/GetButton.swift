@@ -10,8 +10,7 @@ import UIKit
 class GetButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure1()
-//        configure2()
+        configure()
     }
     
     convenience init(backgroundColor: UIColor, setTitleColor: UIColor){
@@ -24,7 +23,7 @@ class GetButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure1() {
+    func configure() {
         setTitle("GET", for: .normal)
         titleLabel!.font = .systemFont(ofSize: 14, weight: .bold)
         layer.cornerRadius = 32 / 2

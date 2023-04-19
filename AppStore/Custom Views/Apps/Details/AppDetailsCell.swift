@@ -9,7 +9,16 @@ import UIKit
 
 class AppDetailsCell: UICollectionViewCell {
     
-    let iconImageView = UIImageView(cornerRadius: 14)
+    var app: Result! {
+        didSet {
+            nameLabel.text = app?.trackName
+            releaseNotesLabel.text = app?.releaseNotes
+            iconImageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
+            getButton.setTitle(app?.formattedPrice, for: .normal)
+        }
+    }
+    
+    let iconImageView = UIImageView(cornerRadius: 16)
     
     let nameLabel = UILabel(text: "App Name", numberOfLines: 2, font: .boldSystemFont(ofSize: 24), textColor: .label)
     
@@ -17,7 +26,7 @@ class AppDetailsCell: UICollectionViewCell {
     
     let whatsNewLabel = UILabel(text: "What`s New", font: .boldSystemFont(ofSize: 20), textColor: .label)
     
-    let releaseNotesLabel = UILabel(text: "Release Notes", numberOfLines: 0, font: .systemFont(ofSize: 16), textColor: .label)
+    let releaseNotesLabel = UILabel(text: "Release Notes", numberOfLines: 0, font: .systemFont(ofSize: 18), textColor: .label)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,7 +66,7 @@ class AppDetailsCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20)
         ])
     }
