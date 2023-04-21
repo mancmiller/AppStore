@@ -31,7 +31,7 @@ class AppDetailsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        iconImageView.backgroundColor = .brown
+        
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 140),

@@ -14,6 +14,12 @@ class SearchVC: BaseListController, UICollectionViewDelegateFlowLayout, UISearch
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = String(appResults[indexPath.item].trackId)
+        let appDetailController = AppDetailVC(appID: appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)

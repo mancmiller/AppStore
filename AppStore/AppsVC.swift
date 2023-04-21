@@ -113,8 +113,7 @@ class AppsVC: BaseListController, UICollectionViewDelegateFlowLayout {
         cell.horizontalController.collectionView.reloadData()
         cell.horizontalController.didSelectHandler = { [weak self] feedResult in
             
-            let vc = AppDetailController()
-            vc.appID = feedResult.id
+            let vc = AppDetailVC(appID: feedResult.id)
             vc.navigationItem.title = feedResult.name
             
             self?.navigationController?.pushViewController(vc, animated: true)

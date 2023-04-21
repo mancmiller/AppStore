@@ -44,6 +44,8 @@ class SearchResultCell: UICollectionViewCell {
     
     let ratingsLabel = UILabel(text: "4.44", font: .systemFont(ofSize: 15, weight: .medium), textColor: .secondaryLabel)
     
+    let getButton = GetButton(backgroundColor: .systemGray5, setTitleColor: .systemBlue)
+    
     lazy var screenshotImageView1 = self.createScreenshotImageView()
     lazy var screenshotImageView2 = self.createScreenshotImageView()
     lazy var screenshotImageView3 = self.createScreenshotImageView()
@@ -72,22 +74,19 @@ class SearchResultCell: UICollectionViewCell {
         labelsStackView.axis = .vertical
         
         let infoStackView = UIStackView(arrangedSubviews: [
-            appIconImageView, labelsStackView, GetButton()
-        ])
-        infoStackView.spacing = 12
+            appIconImageView, labelsStackView, getButton
+        ], customSpacing: 12)
         infoStackView.alignment = .center
         
         let screenshotsStackView = UIStackView(arrangedSubviews: [
         screenshotImageView1, screenshotImageView2, screenshotImageView3
-        ])
-        screenshotsStackView.spacing = 12
+        ], customSpacing: 12)
         screenshotsStackView.distribution = .fillEqually
         
         let overallStackView = UIStackView(arrangedSubviews: [
         infoStackView, screenshotsStackView
-        ])
+        ], customSpacing: 16)
         overallStackView.axis = .vertical
-        overallStackView.spacing = 16
         
         addSubview(overallStackView)
         
