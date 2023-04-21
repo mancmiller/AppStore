@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ASTabBarController: UITabBarController {
+class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewControllers = [
+            createNC(viewController: TodayVC(), title: "Today", systemImageName: "doc.text.image"),
             createNC(viewController: AppsVC(), title: "Apps", systemImageName: "square.stack.3d.up.fill"),
-            createNC(viewController: UIViewController(), title: "Today", systemImageName: "doc.text.image"),
             createNC(viewController: SearchVC(), title: "Search", systemImageName: "magnifyingglass")
         ]
     }
