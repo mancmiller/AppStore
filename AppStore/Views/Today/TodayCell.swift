@@ -9,25 +9,49 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
+    var todayItem: TodayItem! {
+        didSet {
+            categoryLabel.text = todayItem.category
+            titleLabel.text = todayItem.title
+            imageView.image = todayItem.image
+            descriptionLabel.text = todayItem.description
+        }
+    }
+    
+    let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 20), textColor: .label)
+    
+    let titleLabel = UILabel(text: "Utilizing Your Time", font: .boldSystemFont(ofSize: 28), textColor: .label)
+    
     let imageView = UIImageView(image: UIImage(named: "garden"))
+    
+    let descriptionLabel = UILabel(text: "All the tools and apps you need to intelligently organize your life the right way", numberOfLines: 3, font: .systemFont(ofSize: 18), textColor: .label)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .systemGray5
+        clipsToBounds = true
         layer.cornerRadius = 16
+        imageView.contentMode = .scaleAspectFit
         
-        addSubview(imageView)
+        let stackView = UIStackView(arrangedSubviews: [
+        categoryLabel, titleLabel, imageView, descriptionLabel
+        ], customSpacing: 8)
+        stackView.axis = .vertical
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 220),
-            imageView.heightAnchor.constraint(equalToConstant: 220)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 240),
+            imageView.heightAnchor.constraint(equalToConstant: 240)
         ])
-        
     }
     
     required init?(coder: NSCoder) {
