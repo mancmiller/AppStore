@@ -9,12 +9,15 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
+    var topConstant: NSLayoutConstraint!
+    
     var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
+            backgroundColor = todayItem.backgroundColor
         }
     }
     
@@ -41,16 +44,17 @@ class TodayCell: UICollectionViewCell {
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        topConstant = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        topConstant.isActive = true
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
             
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 240),
-            imageView.heightAnchor.constraint(equalToConstant: 240)
+            imageView.widthAnchor.constraint(equalToConstant: 210),
+            imageView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
     

@@ -32,10 +32,8 @@ class TodayFullScreenHeaderCell: UITableViewCell {
             todayCell.trailingAnchor.constraint(equalTo: trailingAnchor),
             todayCell.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            closeButton.widthAnchor.constraint(equalToConstant: 80),
-            closeButton.heightAnchor.constraint(equalToConstant: 34)
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 64),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28)
         ])
     }
     
