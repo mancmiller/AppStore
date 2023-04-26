@@ -22,7 +22,7 @@
 		04123BC829ED428D008A8262 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BC729ED428D008A8262 /* HorizontalSnappingController.swift */; };
 		04123BCE29ED75E7008A8262 /* AppDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04123BCD29ED75E7008A8262 /* AppDetailVC.swift */; };
 		0434FDD629F243F30050B037 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434FDD529F243F30050B037 /* TodayVC.swift */; };
-		0434FDD929F244F70050B037 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434FDD829F244F70050B037 /* TodayCell.swift */; };
+		0434FDD929F244F70050B037 /* TodayBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434FDD829F244F70050B037 /* TodayBannerCell.swift */; };
 		046F3C1529EEBD9700439027 /* AppDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F3C1429EEBD9700439027 /* AppDetailsCell.swift */; };
 		047644C429E434FD00B430BD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C329E434FD00B430BD /* SearchVC.swift */; };
 		047644CA29E4443400B430BD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047644C929E4443400B430BD /* SearchResultCell.swift */; };
@@ -65,7 +65,7 @@
 		04123BC729ED428D008A8262 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HorizontalSnappingController.swift; path = Controllers/Custom/HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		04123BCD29ED75E7008A8262 /* AppDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDetailVC.swift; path = Controllers/Detail/AppDetailVC.swift; sourceTree = "<group>"; };
 		0434FDD529F243F30050B037 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayVC.swift; path = Controllers/Today/TodayVC.swift; sourceTree = "<group>"; };
-		0434FDD829F244F70050B037 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		0434FDD829F244F70050B037 /* TodayBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayBannerCell.swift; sourceTree = "<group>"; };
 		046F3C1429EEBD9700439027 /* AppDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsCell.swift; sourceTree = "<group>"; };
 		047644C329E434FD00B430BD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchVC.swift; path = Controllers/SearchVC.swift; sourceTree = "<group>"; };
 		047644C929E4443400B430BD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		0434FDD729F244E00050B037 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				0434FDD829F244F70050B037 /* TodayCell.swift */,
+				0434FDD829F244F70050B037 /* TodayBannerCell.swift */,
 				049674A429F7EBC9005C2A81 /* TodayMultipleAppCell.swift */,
 				0496749A29F39871005C2A81 /* TodayFullScreenDescriptionCell.swift */,
 				0496749C29F3E207005C2A81 /* TodayFullScreenHeaderCell.swift */,
@@ -431,7 +431,7 @@
 				046F3C1529EEBD9700439027 /* AppDetailsCell.swift in Sources */,
 				0496749929F2A17D005C2A81 /* TodayFullScreenVC.swift in Sources */,
 				049674A729F7F44F005C2A81 /* TodayBaseCell.swift in Sources */,
-				0434FDD929F244F70050B037 /* TodayCell.swift in Sources */,
+				0434FDD929F244F70050B037 /* TodayBannerCell.swift in Sources */,
 				04123BAF29E6DBE9008A8262 /* AppsGroupCell.swift in Sources */,
 				047644D029E687B200B430BD /* API Manager.swift in Sources */,
 				0434FDD629F243F30050B037 /* TodayVC.swift in Sources */,

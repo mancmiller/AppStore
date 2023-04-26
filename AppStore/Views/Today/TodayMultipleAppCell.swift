@@ -22,7 +22,7 @@ class TodayMultipleAppCell: TodayBaseCell {
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 18), textColor: .secondaryLabel)
     let titleLabel = UILabel(text: "Utilizing your Time", numberOfLines: 2, font: .boldSystemFont(ofSize: 28), textColor: .label)
     
-    let multipleAppsController = TodayMultipleAppVC()
+    let multipleAppsController = TodayMultipleAppVC(mode: .small)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,10 +40,10 @@ class TodayMultipleAppCell: TodayBaseCell {
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
         
     }

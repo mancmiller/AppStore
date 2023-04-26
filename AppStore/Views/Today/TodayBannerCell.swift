@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayCell: TodayBaseCell {
+class TodayBannerCell: TodayBaseCell {
     
     var topConstant: NSLayoutConstraint!
     
@@ -43,12 +43,12 @@ class TodayCell: TodayBaseCell {
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        topConstant = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        topConstant = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20)
         topConstant.isActive = true
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),

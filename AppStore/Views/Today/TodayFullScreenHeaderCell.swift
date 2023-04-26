@@ -9,7 +9,7 @@ import UIKit
 
 class TodayFullScreenHeaderCell: UITableViewCell {
     
-    let todayCell = TodayCell()
+    let todayCell = TodayBannerCell()
     
     let closeButton: UIButton = {
         let button = UIButton(type: .system)

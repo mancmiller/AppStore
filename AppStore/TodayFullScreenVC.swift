@@ -19,7 +19,7 @@ class TodayFullScreenVC: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+//        tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
