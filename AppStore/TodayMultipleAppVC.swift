@@ -21,12 +21,12 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
         
         collectionView.register(TodayAppListCell.self, forCellWithReuseIdentifier: cellID)
         
-        APIManager.shared.fetchTopFreeApps { appGroup, error in
-            self.results = appGroup?.feed.results ?? []
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+//        APIManager.shared.fetchTopFreeApps { appGroup, error in
+//            self.results = appGroup?.feed.results ?? []
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
