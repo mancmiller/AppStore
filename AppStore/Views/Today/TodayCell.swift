@@ -21,7 +21,7 @@ class TodayCell: TodayBaseCell {
         }
     }
     
-    let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 20), textColor: .label)
+    let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 18), textColor: .secondaryLabel)
     
     let titleLabel = UILabel(text: "Utilizing Your Time", font: .boldSystemFont(ofSize: 28), textColor: .label)
     
@@ -32,7 +32,6 @@ class TodayCell: TodayBaseCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemGray5
         clipsToBounds = true
         layer.cornerRadius = 16
         imageView.contentMode = .scaleAspectFit
