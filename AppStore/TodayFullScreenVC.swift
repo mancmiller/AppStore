@@ -32,6 +32,7 @@ class TodayFullScreenVC: UITableViewController {
             let headerCell = TodayFullScreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem
+            headerCell.clipsToBounds = true
             return headerCell
         }
         

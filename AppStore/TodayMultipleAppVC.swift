@@ -35,6 +35,7 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if mode == .fullscreen {
             setupCloseButton()
 //            navigationController?.isNavigationBarHidden = true
