@@ -42,7 +42,7 @@ class TodayFullScreenDescriptionCell: UITableViewCell {
             descriptionLabel.topAnchor.constraint(equalTo: topAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 16)
         ])
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayFullScreenVC: UITableViewController {
+class TodayBannerFullScreenVC: UITableViewController {
     
     var dismissHandler: (() -> ())?
     var todayItem: TodayItem?

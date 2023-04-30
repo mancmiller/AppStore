@@ -28,14 +28,7 @@ class TodayBaseCell: UICollectionViewCell {
         
         self.backgroundView = UIView()
         addSubview(self.backgroundView!)
-//        self.backgroundView?.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            self.backgroundView?.topAnchor.constraint(equalTo: topAnchor),
-//            self.backgroundView?.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            self.backgroundView?.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            self.backgroundView?.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
-        
+       
         self.backgroundView?.backgroundColor = .systemGray6
         self.backgroundView?.layer.cornerRadius = 16
         self.backgroundView?.layer.shadowOpacity = 0.12

@@ -15,7 +15,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     var items = [TodayItem]()
     
     var activityIndicatorView = UIActivityIndicatorView(style: .large)
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,7 +68,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             dispatchGroup.leave()
         }
         dispatchGroup.notify(queue: .main) {
-
+            
             self.activityIndicatorView.stopAnimating()
             self.items = [
                 TodayItem(category: "Daily List", title: "Top Grossing iPhone Apps", image: nil, description: "", backgroundColor: .systemGray6, cellType: .multiple, apps: topGrossing?.feed.results ?? []),
@@ -81,54 +81,30 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    var todayFullScreenVC: TodayFullScreenVC!
+    fileprivate func showMultipleAppListFullScreen(_ indexPath: IndexPath) {
+        let fullAppListVC = TodayMultipleAppVC(mode: .fullscreen)
+        fullAppListVC.apps = self.items[indexPath.item].apps
+        present(UINavigationController(rootViewController: fullAppListVC), animated: true)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch items[indexPath.item].cellType {
+        case .multiple:
+            showMultipleAppListFullScreen(indexPath)
+        default:
+            showTodayBannerFullScreen(indexPath: indexPath)
+        }
+    }
+    
+    var todayBannerFullScreenVC: TodayBannerFullScreenVC!
     
     var topConstraint: NSLayoutConstraint?
     var leadingConstraint: NSLayoutConstraint?
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if items[indexPath.item].cellType == .multiple {
-            
-            let fullAppListVC = TodayMultipleAppVC(mode: .fullscreen)
-            fullAppListVC.apps = self.items[indexPath.item].apps
-            present(UINavigationController(rootViewController: fullAppListVC ), animated: true)
-            return
-        }
-        
-        let todayFullScreenVC = TodayFullScreenVC()
-        todayFullScreenVC.todayItem = items[indexPath.row]
-        todayFullScreenVC.dismissHandler = {
-            self.removeFullScreeinView()
-        }
-        
-        let fullScreenView = todayFullScreenVC.view!
-        view.addSubview(fullScreenView)
-        
-        addChild(todayFullScreenVC)
-        
-        self.todayFullScreenVC = todayFullScreenVC
-        
-        self.collectionView.isUserInteractionEnabled = false
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        
-        // absolute coordinates of cell
-        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
-        
-        self.startingFrame = startingFrame
-        fullScreenView.translatesAutoresizingMaskIntoConstraints = false
-        topConstraint = fullScreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
-        leadingConstraint = fullScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
-        widthConstraint = fullScreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
-        heightConstraint = fullScreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
-        
-        [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
-        
-        fullScreenView.layer.cornerRadius = 16
-        
+    fileprivate func animateTodayBannerFullScreen() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.topConstraint?.constant = 0
@@ -139,22 +115,68 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             self.view.layoutIfNeeded()
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
-//            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
+            //            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
             
-//            guard let cell = todayFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
-//            cell.todayCell.topConstraint.constant = 48
-//            cell.layoutIfNeeded()
-
-        }, completion: nil)
+            guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
+            cell.layoutIfNeeded()
+        })
+    }
+    
+    fileprivate func setupTodayBannerFullScreenVC(_ indexPath: IndexPath) {
+        let todayBannerFullScreenVC = TodayBannerFullScreenVC()
+        todayBannerFullScreenVC.todayItem = items[indexPath.row]
+        todayBannerFullScreenVC.dismissHandler = {
+            self.removeFullScreeinView()
+        }
+        todayBannerFullScreenVC.view.layer.cornerRadius = 16
+        self.todayBannerFullScreenVC = todayBannerFullScreenVC
+    }
+    
+    fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        
+        // absolute coordinates of cell
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        
+        self.startingFrame = startingFrame
+    }
+    
+    fileprivate func setupTodayBannerStartingPosition(_ indexPath: IndexPath) {
+        let fullScreenView = todayBannerFullScreenVC.view!
+        view.addSubview(fullScreenView)
+        
+        addChild(todayBannerFullScreenVC)
+        
+        self.collectionView.isUserInteractionEnabled = false
+        
+        setupStartingCellFrame(indexPath)
+        
+        guard let startingFrame = self.startingFrame else { return }
+        
+        fullScreenView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = fullScreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = fullScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = fullScreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = fullScreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        
+        [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
+        self.view.layoutIfNeeded()
+    }
+    
+    fileprivate func showTodayBannerFullScreen(indexPath: IndexPath) {
+        setupTodayBannerFullScreenVC(indexPath)
+        setupTodayBannerStartingPosition(indexPath)
+        animateTodayBannerFullScreen()
+        
     }
     
     var startingFrame: CGRect?
     
     @objc func removeFullScreeinView() {
-        self.navigationController?.navigationBar.isHidden = false
+        //        self.navigationController?.navigationBar.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
-            self.todayFullScreenVC.tableView.contentOffset = .zero
+            self.todayBannerFullScreenVC.tableView.contentOffset = .zero
             
             guard let startingFrame = self.startingFrame else { return }
             self.topConstraint?.constant = startingFrame.origin.y
@@ -163,18 +185,19 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             self.heightConstraint?.constant = startingFrame.height
             
             self.view.layoutIfNeeded()
+            self.tabBarController?.tabBar.transform = .identity
             
-            if let tabBarFrame = self.tabBarController?.tabBar.frame {
-                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
-            }
+            //            if let tabBarFrame = self.tabBarController?.tabBar.frame {
+            //                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
+            //            }
             
-//            guard let cell = self.todayFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
-//            cell.todayCell.topConstraint.constant = 24
-//            cell.layoutIfNeeded()
+            guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
+            //            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
             
         }, completion: { _ in
-            self.todayFullScreenVC.view.removeFromSuperview()
-            self.todayFullScreenVC.removeFromParent()
+            self.todayBannerFullScreenVC.view.removeFromSuperview()
+            self.todayBannerFullScreenVC.removeFromParent()
             self.collectionView.isUserInteractionEnabled = true
         })
     }
