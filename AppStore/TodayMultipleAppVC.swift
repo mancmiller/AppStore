@@ -37,14 +37,10 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
         
         
         if mode == .fullscreen {
-            setupCloseButton()
-//            navigationController?.isNavigationBarHidden = true
-        } else {
-            collectionView.isScrollEnabled = false
+            navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(handleDismiss))
         }
         
-        collectionView.backgroundColor = .systemGray6
-        
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(TodayAppListCell.self, forCellWithReuseIdentifier: cellID)
     }
     
@@ -77,8 +73,6 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-//        let cellHeight: CGFloat = (view.frame.height - 3 * interCellSpacing) / 4
         
         let cellHeight: CGFloat = 68
         if mode == .fullscreen {

@@ -34,7 +34,7 @@ class TodayFullScreenDescriptionCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = .systemBackground
         
         addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +42,7 @@ class TodayFullScreenDescriptionCell: UITableViewCell {
             descriptionLabel.topAnchor.constraint(equalTo: topAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 16)
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
     

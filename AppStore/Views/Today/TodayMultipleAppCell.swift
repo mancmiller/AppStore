@@ -27,7 +27,6 @@ class TodayMultipleAppCell: TodayBaseCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemGray5
         layer.cornerRadius = 16
         
         let stackView = UIStackView(arrangedSubviews: [

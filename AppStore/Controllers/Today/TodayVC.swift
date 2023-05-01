@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
+class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     fileprivate let cellID = "cellID"
     fileprivate let multipleAppCellID = "multipleAppCellID"
@@ -16,8 +16,25 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var activityIndicatorView = UIActivityIndicatorView(style: .large)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.superview?.setNeedsLayout()
+    }
+    
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            blurVisualEffectView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurVisualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurVisualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blurVisualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        blurVisualEffectView.alpha = 0
         
         configureActivityIndicatorView()
         
@@ -25,8 +42,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
         
         navigationController?.isNavigationBarHidden = true
         
-        collectionView.backgroundColor = .systemBackground
-        
+        collectionView.backgroundColor = .systemGray6
         collectionView.register(TodayBannerCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
     }
@@ -71,10 +87,10 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.activityIndicatorView.stopAnimating()
             self.items = [
-                TodayItem(category: "Daily List", title: "Top Grossing iPhone Apps", image: nil, description: "", backgroundColor: .systemGray6, cellType: .multiple, apps: topGrossing?.feed.results ?? []),
+                TodayItem(category: "Daily List", title: "Top Grossing iPhone Apps", image: nil, description: "", backgroundColor: .systemBackground, cellType: .multiple, apps: topGrossing?.feed.results ?? []),
                 TodayItem(category: "HOLIDAYS", title: "Travel on a Budget", image: UIImage.init(named: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: UIColor(named: "backgroundColor") ?? .white, cellType: .single, apps: []),
-                TodayItem(category: "Daily List", title: topFree?.feed.title ?? "", image: nil, description: "", backgroundColor: .systemGray6, cellType: .multiple, apps: topFree?.feed.results ?? []),
-                TodayItem(category: "LIFE HACK", title: "Utilizing Your Time", image: UIImage.init(named: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .systemGray6, cellType: .single, apps: [])
+                TodayItem(category: "Daily List", title: topFree?.feed.title ?? "", image: nil, description: "", backgroundColor: .systemBackground, cellType: .multiple, apps: topFree?.feed.results ?? []),
+                TodayItem(category: "LIFE HACK", title: "Utilizing Your Time", image: UIImage.init(named: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .systemBackground, cellType: .single, apps: [])
             ]
             
             self.collectionView.reloadData()
@@ -104,8 +120,10 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
-    fileprivate func animateTodayBannerFullScreen() {
+    fileprivate func beginAnimatingTodayBannerFullScreen() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            
+            self.blurVisualEffectView.alpha = 1
             
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
@@ -114,8 +132,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded()
             
-            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
-            //            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
             
             guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
             cell.layoutIfNeeded()
@@ -125,11 +142,35 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     fileprivate func setupTodayBannerFullScreenVC(_ indexPath: IndexPath) {
         let todayBannerFullScreenVC = TodayBannerFullScreenVC()
         todayBannerFullScreenVC.todayItem = items[indexPath.row]
+        
         todayBannerFullScreenVC.dismissHandler = {
             self.removeFullScreeinView()
         }
+        
         todayBannerFullScreenVC.view.layer.cornerRadius = 16
         self.todayBannerFullScreenVC = todayBannerFullScreenVC
+        
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
+        gesture.delegate = self
+        todayBannerFullScreenVC.view.addGestureRecognizer(gesture)
+    }
+    
+    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        let translationY = gesture.translation(in: todayBannerFullScreenVC.view).y
+        
+        if gesture.state == .changed {
+            let scale = 1 - translationY / 1000
+            
+            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+            self.todayBannerFullScreenVC.view.transform = transform
+            
+        } else if gesture.state == .ended {
+            removeFullScreeinView()
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
@@ -166,7 +207,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     fileprivate func showTodayBannerFullScreen(indexPath: IndexPath) {
         setupTodayBannerFullScreenVC(indexPath)
         setupTodayBannerStartingPosition(indexPath)
-        animateTodayBannerFullScreen()
+        beginAnimatingTodayBannerFullScreen()
         
     }
     
@@ -175,6 +216,9 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
     @objc func removeFullScreeinView() {
         //        self.navigationController?.navigationBar.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            
+            self.blurVisualEffectView.alpha = 0
+            self.todayBannerFullScreenVC.view.transform = .identity
             
             self.todayBannerFullScreenVC.tableView.contentOffset = .zero
             
@@ -185,14 +229,13 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout {
             self.heightConstraint?.constant = startingFrame.height
             
             self.view.layoutIfNeeded()
-            self.tabBarController?.tabBar.transform = .identity
             
-            //            if let tabBarFrame = self.tabBarController?.tabBar.frame {
-            //                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
-            //            }
+            if let tabBarFrame = self.tabBarController?.tabBar.frame {
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
+            }
             
             guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
-            //            cell.todayCell.topConstraint.constant = 24
+            
             cell.layoutIfNeeded()
             
         }, completion: { _ in

@@ -33,7 +33,6 @@ class TodayBannerCell: TodayBaseCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        clipsToBounds = true
         layer.cornerRadius = 16
         imageView.contentMode = .scaleAspectFit
         
@@ -44,9 +43,8 @@ class TodayBannerCell: TodayBaseCell {
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        topConstant = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20)
-        topConstant.isActive = true
         NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
