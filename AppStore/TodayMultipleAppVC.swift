@@ -13,14 +13,6 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
     
     var apps = [FeedResult]()
     
-    let closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage.init(systemName: "xmark.circle.fill"), for: .normal)
-        button.tintColor = .systemGray
-        button.addTarget(target.self, action: #selector(handleDismiss), for: .touchUpInside)
-        return button
-    }()
-    
     @objc func handleDismiss() {
         dismiss(animated: true)
     }
@@ -44,18 +36,9 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(TodayAppListCell.self, forCellWithReuseIdentifier: cellID)
     }
     
-    fileprivate func setupCloseButton() {
-        view.addSubview(closeButton)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if mode == .fullscreen {
-            return UIEdgeInsets(top: 40, left: 20, bottom: 20, right: 20)
+            return UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
         }
             return .zero
     }
@@ -70,6 +53,7 @@ class TodayMultipleAppVC: BaseListController, UICollectionViewDelegateFlowLayout
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayAppListCell
         cell.app = self.apps[indexPath.item]
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

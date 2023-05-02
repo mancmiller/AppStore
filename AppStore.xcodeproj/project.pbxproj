@@ -180,8 +180,8 @@
 			children = (
 				0434FDD829F244F70050B037 /* TodayBannerCell.swift */,
 				049674A429F7EBC9005C2A81 /* TodayMultipleAppCell.swift */,
-				0496749A29F39871005C2A81 /* TodayFullScreenDescriptionCell.swift */,
 				0496749C29F3E207005C2A81 /* TodayFullScreenHeaderCell.swift */,
+				0496749A29F39871005C2A81 /* TodayFullScreenDescriptionCell.swift */,
 				049674A629F7F44F005C2A81 /* TodayBaseCell.swift */,
 				049674AA29F7F703005C2A81 /* TodayAppListCell.swift */,
 			);

@@ -12,6 +12,13 @@ class TodayBannerFullScreenVC: UITableViewController {
     var dismissHandler: (() -> ())?
     var todayItem: TodayItem?
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -19,6 +26,7 @@ class TodayBannerFullScreenVC: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 60, right: 0)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +40,8 @@ class TodayBannerFullScreenVC: UITableViewController {
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem
             headerCell.clipsToBounds = true
+            headerCell.todayCell.backgroundView = nil
+            
             return headerCell
         }
         

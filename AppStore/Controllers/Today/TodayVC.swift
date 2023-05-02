@@ -120,7 +120,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
-    fileprivate func beginAnimatingTodayBannerFullScreen() {
+    fileprivate func animateTodayBannerFullScreen() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.blurVisualEffectView.alpha = 1
@@ -135,6 +135,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
             
             guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
+            cell.todayCell.topConstraint.constant = 60
             cell.layoutIfNeeded()
         })
     }
@@ -155,17 +156,36 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
         todayBannerFullScreenVC.view.addGestureRecognizer(gesture)
     }
     
+    var todayBannerFullScreenBeginOffset: CGFloat = 0
+    
     @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .began {
+            todayBannerFullScreenBeginOffset = todayBannerFullScreenVC.tableView.contentOffset.y
+        }
+        
+        if todayBannerFullScreenVC.tableView.contentOffset.y > 0 {
+            return
+        }
+        
         let translationY = gesture.translation(in: todayBannerFullScreenVC.view).y
         
         if gesture.state == .changed {
-            let scale = 1 - translationY / 1000
-            
-            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
-            self.todayBannerFullScreenVC.view.transform = transform
-            
+            if translationY > 0 {
+                
+                let trueOffset = translationY - todayBannerFullScreenBeginOffset
+                
+                var scale = 1 - trueOffset / 1000
+                scale = min(1, scale)
+                scale = max(0.5, scale)
+                
+                let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+                self.todayBannerFullScreenVC.view.transform = transform
+            }
         } else if gesture.state == .ended {
-            removeFullScreeinView()
+            if translationY > 0 {
+                removeFullScreeinView()
+            }
         }
     }
     
@@ -207,14 +227,13 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
     fileprivate func showTodayBannerFullScreen(indexPath: IndexPath) {
         setupTodayBannerFullScreenVC(indexPath)
         setupTodayBannerStartingPosition(indexPath)
-        beginAnimatingTodayBannerFullScreen()
+        animateTodayBannerFullScreen()
         
     }
     
     var startingFrame: CGRect?
     
     @objc func removeFullScreeinView() {
-        //        self.navigationController?.navigationBar.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.blurVisualEffectView.alpha = 0
@@ -235,7 +254,8 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
             }
             
             guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
-            
+            cell.todayCell.topConstraint.constant = 20
+            cell.closeButton.alpha = 0
             cell.layoutIfNeeded()
             
         }, completion: { _ in

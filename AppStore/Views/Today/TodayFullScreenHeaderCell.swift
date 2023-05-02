@@ -10,13 +10,7 @@ import UIKit
 class TodayFullScreenHeaderCell: UITableViewCell {
     
     let todayCell = TodayBannerCell()
-    
-    let closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage.init(systemName: "xmark.circle.fill"), for: .normal)
-        button.tintColor = .systemGray
-        return button
-    }()
+    let closeButton = UIButton(type: .close)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,7 +25,7 @@ class TodayFullScreenHeaderCell: UITableViewCell {
             todayCell.leadingAnchor.constraint(equalTo: leadingAnchor),
             todayCell.trailingAnchor.constraint(equalTo: trailingAnchor),
             todayCell.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+
             closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 64),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28)
         ])
