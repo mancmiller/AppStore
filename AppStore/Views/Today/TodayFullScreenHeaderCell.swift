@@ -10,24 +10,16 @@ import UIKit
 class TodayFullScreenHeaderCell: UITableViewCell {
     
     let todayCell = TodayBannerCell()
-    let closeButton = UIButton(type: .close)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        contentView.addSubview(todayCell)
-        contentView.addSubview(closeButton)
-        
         todayCell.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(todayCell)
         NSLayoutConstraint.activate([
             todayCell.topAnchor.constraint(equalTo: topAnchor),
             todayCell.leadingAnchor.constraint(equalTo: leadingAnchor),
             todayCell.trailingAnchor.constraint(equalTo: trailingAnchor),
-            todayCell.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 64),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28)
+            todayCell.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

@@ -255,7 +255,7 @@ class TodayVC: BaseListController, UICollectionViewDelegateFlowLayout, UIGesture
             
             guard let cell = self.todayBannerFullScreenVC.tableView.cellForRow(at: [0,0]) as? TodayFullScreenHeaderCell else { return }
             cell.todayCell.topConstraint.constant = 20
-            cell.closeButton.alpha = 0
+            self.todayBannerFullScreenVC.closeButton.alpha = 0
             cell.layoutIfNeeded()
             
         }, completion: { _ in
