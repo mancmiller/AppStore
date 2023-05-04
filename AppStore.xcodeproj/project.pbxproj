@@ -46,6 +46,7 @@
 		04EFDFA629E419D10065E5E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFA529E419D10065E5E4 /* SceneDelegate.swift */; };
 		04EFDFAD29E419D30065E5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDFAC29E419D30065E5E4 /* Assets.xcassets */; };
 		04EFDFB829E4204D0065E5E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDFB729E4204D0065E5E4 /* TabBarController.swift */; };
+		04F688842A027B71003887D7 /* AppsCompositionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F688832A027B71003887D7 /* AppsCompositionalView.swift */; };
 		51E44947C899908F79EDFC2E /* Pods_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA45510A2E5D0B2D6DC27AC /* Pods_AppStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		04EFDFAC29E419D30065E5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04EFDFB129E419D30065E5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04EFDFB729E4204D0065E5E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = Controllers/Custom/TabBarController.swift; sourceTree = "<group>"; };
+		04F688832A027B71003887D7 /* AppsCompositionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsCompositionalView.swift; sourceTree = "<group>"; };
 		3BA45510A2E5D0B2D6DC27AC /* Pods_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60EBAA8074B38AA3FDC0C750 /* Pods-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.debug.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		F23C4420C36C5ED305A73CB6 /* Pods-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.release.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		04123BC429EBD403008A8262 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				04F688822A027B2B003887D7 /* Compositional Layout */,
 				04123BAA29E6D877008A8262 /* AppsVC.swift */,
 				04123BB929EAB588008A8262 /* AppsHeaderHorizontalController.swift */,
 				04123BB029E7FD30008A8262 /* AppsHorizontalController.swift */,
@@ -286,6 +289,14 @@
 			path = AppStore;
 			sourceTree = "<group>";
 		};
+		04F688822A027B2B003887D7 /* Compositional Layout */ = {
+			isa = PBXGroup;
+			children = (
+				04F688832A027B71003887D7 /* AppsCompositionalView.swift */,
+			);
+			name = "Compositional Layout";
+			sourceTree = "<group>";
+		};
 		6698ADDC08C10CA364450304 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +437,7 @@
 				04EA637629EFE46000570950 /* Reviews.swift in Sources */,
 				0496749B29F39871005C2A81 /* TodayFullScreenDescriptionCell.swift in Sources */,
 				04123BAD29E6D9B4008A8262 /* BaseListController.swift in Sources */,
+				04F688842A027B71003887D7 /* AppsCompositionalView.swift in Sources */,
 				04123BC129EACC98008A8262 /* AppsHeaderCell.swift in Sources */,
 				04EA637029EFC9F000570950 /* ReviewRowCell.swift in Sources */,
 				046F3C1529EEBD9700439027 /* AppDetailsCell.swift in Sources */,

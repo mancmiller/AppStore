@@ -17,6 +17,8 @@ class AppsHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        imageView.image = UIImage(named: "holiday")
+        
         titleLabel.numberOfLines = 2
         
         let stackView = UIStackView(arrangedSubviews: [
