@@ -3,7 +3,7 @@
 ![1](https://github.com/mancmiller/AppStore/assets/105654261/d0cc608e-dccd-4d97-94ef-7ab1e2b9eda3)
 
 # Project 
-My take on recreating a rough draft of the AppStore following the LBTA course. The AppStore data was taken from https://rss.applemarketingtools.com/ and recreated with JSON responses. Spent quality time along the way learning a lot about CollectionViews and animations.
+My take on recreating a rough draft of the AppStore following the LBTA course. The AppStore data was taken from https://rss.applemarketingtools.com/ and fetched inside the project with JSON responses. Spent quality time along the way learning a lot about CollectionViews and animations.
 
 # Installation 
 • git clone https://github.com/mancmiller/AppStore    
