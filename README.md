@@ -1,7 +1,21 @@
 # AppStore
-![image](https://github.com/mancmiller/AppStore/assets/105654261/775683fc-467c-4f31-9e20-502df74c9c85)
-![image](https://github.com/mancmiller/AppStore/assets/105654261/0b9f2823-a230-4e4e-86f9-69dd46383575)
-![image](https://github.com/mancmiller/AppStore/assets/105654261/e6e4ea7a-5887-4d9f-8f5f-5d1a6fc90479)
+
+![1](https://github.com/mancmiller/AppStore/assets/105654261/d0cc608e-dccd-4d97-94ef-7ab1e2b9eda3)
+
+# Project 
+My take on recreating a rough draft of the AppStore following the LBTA course. The AppStore data was taken from https://rss.applemarketingtools.com/ and recreated with JSON responses. Spent quality time along the way learning a lot about CollectionViews and animations.
+
+# Installation 
+• git clone https://github.com/mancmiller/AppStore    
+• open terminal cd to the directory and run pod install  
+• open AppStore/AppStore.xcworkspace   
+• open Xcode and run the project 
+
+# Technology Stack
+• UIKit  
+• Cocoapods (SDWebImage)  
+• iOS RSS Feed Generator  
+
 
 
 https://github.com/mancmiller/AppStore/assets/105654261/ceb9eafc-407b-4864-ae3b-bc8fb8d080fc
